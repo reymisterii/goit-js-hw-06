@@ -98,9 +98,11 @@ const galleryEl = document.querySelector(`.gallery`);
 // insertAdjacentHTML
 const markup = images
   .map(({ url, alt }) => {
-    const liEl = document.createElement(`li`);
-    liEl.insertAdjacentHTML(`afterbegin`, `<img src=${url} alt={alt} width="320">`);
-    return liEl;
+    return `
+    <li>
+      <img src=${url} alt={alt} width="320">
+    </li>\
+    `;
   });
 
-  galleryEl.append(...markup);
+galleryEl.insertAdjacentHTML(`beforeend`, markup);
