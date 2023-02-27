@@ -10,16 +10,22 @@ console.log(inputPassword);
 
 formRef.addEventListener(`submit`, (e) => {
    e.preventDefault();
-   const {
-      elements: { email, password }
-   } = e.currentTarget;
+
+   const forElements = e.currentTarget.elements;
+   const mail = forElements.email.value;
+   const password = forElements.password.value;
  
-   if (email.value === "" || password.value === "") {
+   if (mail === "" || password === "") {
       return alert(`Заповніть будь-ласка всі поля`);
    }
    console.log(e);
-   console.log(`Login:${email.value}, Password: ${password.value}`);
+   console.log(`Login:${mail}, Password: ${password}`);
 
+   const formData = {
+      mail,
+      password,
+   }
+   console.log(formData);
 });
 
 formRef.addEventListener(`submit`, resetInput);
